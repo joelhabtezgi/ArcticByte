@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="se.lu.ics.Controllers.MainViewController"
+      prefHeight="680.0" prefWidth="1020.0"
+      style="-fx-background-color: linear-gradient(to bottom, #f0f4f7, #d9e4ec);">
+  
+  <!-- Header with Logo -->
+  <HBox alignment="CENTER_LEFT" style="-fx-padding: 15 20 10 20; -fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 0 0 10 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+    <!-- Professional Text Logo -->
+    <VBox alignment="CENTER_LEFT" spacing="2">
+      <Label text="ArcticByte" 
+             style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+      <Label text="Consultant Management System" 
+             style="-fx-font-size: 14; -fx-text-fill: #3498db; -fx-font-weight: 600;"/>
+    </VBox>
+  </HBox>
+
+  <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE"
+           minHeight="650.0" minWidth="1020.0" prefHeight="650.0" prefWidth="1020.0"
+           tabMinWidth="160" tabMaxWidth="250" tabMinHeight="40"
+           style="-fx-tab-min-width: 160; -fx-tab-max-width: 250; -fx-tab-min-height: 40; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: transparent; -fx-padding: 5;">
+    <tabs>
+      <Tab fx:id="consultantTab" text="Consultant">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="projectTab" text="Project">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="workTab" text="Work">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="milestoneTab" text="Milestone">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="metadataTab" text="Metadata">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="excelTab" text="Excel">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+    </tabs>
+  </TabPane>
+</VBox>

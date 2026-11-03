@@ -1,0 +1,135 @@
+# ArcticByte Database Project – Requirements
+
+Denna fil sammanfattar samtliga krav från E–A nivå i uppgiften *Database Project Assignment – ArcticByte Consulting*.
+
+---
+
+## **Allmänna krav (E–A)**
+- Applikationen ska vara skriven i **Java**.
+- Applikationen ska följa **Model-View-Controller (MVC)**-mönstret.
+- **Felhantering** måste finnas – felmeddelanden ska visas för användaren.
+- Databasen ska köras på en **VM i Azure med SQL Server**.
+- Tabeller ska använda **surrogatnycklar** där det är lämpligt.
+- Alla tabeller ska uppfylla **3NF (Third Normal Form)**.
+- All kod ska följa gällande **programmerings- och namngivningskonventioner**.
+
+---
+
+## **Säkerhetskrav (E–A)**
+- Java-applikationen ska skydda mot **SQL-injektioner**.
+- SQL Server-konton får **inte** ha `sysadmin` eller `db_owner`-rättigheter.
+- **Databasuppgifter** (serveradress, användarnamn, lösenord) får inte lagras i källkod eller GitHub.
+
+---
+
+## **Funktionella krav (E–A)**
+
+### **Registrering**
+- Registrera projekt 
+- Registrera konsulter 
+- Registrera milstolpar
+- Koppla konsult till projekt (vid registrering)
+- Koppla milstolpe till projekt (vid registrering)
+
+### **Informationssökning**
+- Hämta information om projekt via projekt-ID
+- Hämta information om konsult via employee-ID
+- Hämta alla konsulter med en viss titel
+- Hämta alla milstolpar för ett visst projekt, sorterade på datum
+- Lista alla konsulter i ett visst projekt
+- Visa totalt antal timmar för en konsult (över alla projekt)
+- Hämta information om alla projekt
+- Hämta information om alla konsulter
+
+### **Uppdatering**
+- Uppdatera konsultinformation (ej primärnyckel)
+- Uppdatera projektinformation (ej primärnyckel)
+
+### **Aggregationer**
+- Hämta totalt antal konsulter i systemet
+- Visa totalt antal arbetade timmar av alla konsulter
+
+---
+
+## **Systembegränsningar (E–A)**
+- Konsulter måste ha namn
+- Timmar får inte vara negativa
+- Milstolpar får inte ha datum före **2022-01-01**
+
+---
+
+## **Metadata-krav**
+- **E-nivå:** SQL-frågor i `.sql`-fil för att hämta:
+  - Alla kolumnnamn i databasen
+  - Alla primärnyckelskonstraints
+  - Alla check-konstraints
+- **D–A-nivå:** Resultaten ska visas i applikationens GUI.
+
+---
+
+## **Microsoft Excel-krav**
+- Skapa SQL Server-konto `excel_reader` med endast **read-permissions**.
+- Från Excel, kunna köra queries som hämtar:
+  - Alla konsulter
+  - Alla projekt
+  - Alla milstolpar
+- **B–A-nivå:** Applikationen ska kunna öppna Excel-filen inifrån programmet (ingen import krävs).
+
+---
+
+## **Icke-funktionella krav (för D–A)**
+- Väl designad mjukvara med intuitiv användardialog och GUI
+- Rätt val av GUI-element för uppgiften
+- Genomtänkt felhantering med användarvänliga felmeddelanden
+- **Modulär mjukvarudesign**
+- Applikationen implementerar ett **Data Access Layer (DAO)**
+- Väldesignad och välstrukturerad applikation
+- **Dataintegritet**
+- Användning av tabeller för data (ex. JavaFX TableView)
+
+---
+
+## **Specialkrav per betygsnivå**
+
+### **C-nivå**
+- Ta bort konsult
+- Ta bort projekt
+- Uppdatera timmar för en konsult i ett projekt
+- Metadata: Hämta alla kolumner i **Consultant**-tabellen som **inte** är `INTEGER` och visa i GUI
+
+### **B-nivå**
+- Hämta alla konsulter som jobbar i **tre projekt eller färre**
+- Hämta totalt antal milstolpar för ett visst projekt
+- Ta bort en milstolpe från ett projekt
+- Metadata: Hämta tabellen med **flest rader** (namn + antal rader) och visa i GUI
+- Funktionalitet för att öppna Excel-filen från applikationen
+
+### **A-nivå**
+- Hämta den **hårdast arbetande konsulten**
+- Vid tillägg av konsult till projekt: om projektet tar upp mer än **60 % av företagets resurser**, visa varning
+- Hämta alla projekt som involverar **alla konsulter**
+
+---
+
+## **Systemdokumentation**
+- Framsida med:
+  - Namn, personnummer (YYYYMMDD-XXXX) och GitHub-konto för alla i gruppen
+  - GitHub teamnamn och länkar till repo
+- Kort systemöversikt: hur applikationen stödjer organisationens mål och processer
+- Diagram (endast med modellverktyg, ej handritade):
+  - **ER-diagram** (konceptuell modell)
+  - **Logisk datamodell** (textuell notation)
+  - **Klassdiagram** (Java-applikation, exkludera setters/getters/GUI-variabler)
+- Övrigt:
+  - Lista över all utvecklingsprogramvara
+  - Lista över tredjepartsbibliotek (eller ange att inga används)
+  - Kända buggar/limitationer
+  - Förslag på förbättringar
+
+---
+
+## **Presentationskrav**
+- Databasen ska vara fylld med testdata för alla entiteter och relationer
+- Presentation ska ske från **en laptop**
+- Systemet ska vara körbart utan sista-minuten-fixar
+- Gruppen ska vara förberedda och ha en backup-plan
