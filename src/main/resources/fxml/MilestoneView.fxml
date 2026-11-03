@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorMilestone" 
+           xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="se.lu.ics.Controllers.MilestoneViewController"
+           prefWidth="1020.0" prefHeight="650.0"
+           style="-fx-background-color: linear-gradient(to bottom, #f0f4f7, #d9e4ec);">
+
+   <children>
+       <VBox spacing="20"
+             AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+             AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+
+           <!-- Title -->
+           <Label text="Milestone Overview"
+                  style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-underline: true;"/>
+
+           <!-- Toolbar -->
+           <HBox spacing="10">
+               <Button fx:id="btnLoadMilestonesByProject" text="Show Project Milestones" onAction="#handleLoadByProject"
+                       style="-fx-background-color: #27ae60; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-weight: 600;"/>
+               <Button fx:id="btnLoadAllMilestone" text="Load All Milestones" onAction="#handleLoadAllMilestone"
+                       style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-weight: 600;"/>
+               <Button fx:id="btnCountMilestones" text="Count Only" onAction="#handleCountMilestones" visible="false"
+                       style="-fx-background-color: #f39c12; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-weight: 600;"/>
+
+               <!-- Status Labels -->
+               <Region HBox.hgrow="ALWAYS"/>
+               <Label fx:id="lblLoadMilestones" text="Loaded: 0 milestones"
+                      style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+               <Label fx:id="lblMilestoneCount" text="Count: Select a project"
+                      style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+           </HBox>
+
+           <!-- Main Content Area -->
+           <HBox spacing="20" VBox.vgrow="ALWAYS">
+               
+               <!-- Left Form Panel -->
+               <VBox spacing="15" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;">
+                   <Label text="Add Milestone to Project" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-smoothing-type: lcd;"/>
+                   <Label text="Fill in the details below to add a new milestone to a project" 
+                         style="-fx-font-size: 12; -fx-text-fill: #7f8c8d; -fx-wrap-text: true;"/>
+                   
+                   <VBox spacing="8">
+                       <Label text="Milestone No:" style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+                       <HBox spacing="8">
+                           <TextField fx:id="txtMilestoneNo" promptText="Search or Generate New" 
+                                    style="-fx-background-radius: 8; -fx-padding: 8; -fx-border-color: #ced4da; -fx-border-radius: 8; -fx-border-width: 1;" HBox.hgrow="ALWAYS"/>
+                           <Button fx:id="btnGenerateNew" text="Generate New" onAction="#handleGenerateNew"
+                                   style="-fx-background-color: #17a2b8; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 10px;"/>
+                       </HBox>
+                   </VBox>
+                   
+                   <VBox spacing="8">
+                       <Label text="Milestone Name:" style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+                       <TextField fx:id="txtMilestoneName" promptText="Enter milestone name"
+                                style="-fx-background-radius: 8; -fx-padding: 8;"/>
+                   </VBox>
+                   
+                   <VBox spacing="8">
+                       <Label text="Target Date:" style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+                       <DatePicker fx:id="dpMilestoneDate" promptText="Select target date"
+                                 style="-fx-background-radius: 8;"/>
+                   </VBox>
+                   
+                   <VBox spacing="8">
+                       <Label text="Status:" style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+                       <ComboBox fx:id="cbMilestoneStatus" maxWidth="280" promptText="Select status"
+                               style="-fx-background-radius: 8;"/>
+                   </VBox>
+                   
+                   <VBox spacing="8">
+                       <Label text="Project:" style="-fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+                       <ComboBox fx:id="cbMilestoneProject" maxWidth="280" promptText="Select project to add milestone to"
+                               style="-fx-background-radius: 8;"/>
+                       <Label text="Select a project above, then click 'Show Project Milestones' to view all milestones for that project" 
+                             style="-fx-font-size: 10; -fx-text-fill: #95a5a6; -fx-wrap-text: true;"/>
+                   </VBox>
+
+                   <!-- Action Buttons -->
+                   <VBox spacing="10" style="-fx-padding: 10 0 0 0;">
+                       <HBox spacing="10">
+                           <Button fx:id="btnAddMilestone" text="Add" onAction="#handleAddMilestone" prefWidth="85"
+                                   style="-fx-background-color: #27ae60; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: 600;"/>
+                           <Button fx:id="btnUpdateMilestone" text="Update" onAction="#handleUpdateMilestone" prefWidth="85"
+                                   style="-fx-background-color: #f39c12; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: 600;"/>
+                           <Button fx:id="btnDeleteMilestone" text="Delete" onAction="#handleDeleteMilestone" prefWidth="85"
+                                   style="-fx-background-color: #e74c3c; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: 600;"/>
+                       </HBox>
+                       <Button fx:id="btnClearFieldsMilestone" text="Clear Fields" onAction="#handleClearFieldsMilestone"
+                               style="-fx-background-color: #95a5a6; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: 600;"/>
+                   </VBox>
+               </VBox>
+
+               <!-- Right Table Panel -->
+               <VBox spacing="15" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;">
+                   <Label text="Milestones Overview" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-smoothing-type: lcd;"/>
+                   
+                   <TableView fx:id="tableMilestone" VBox.vgrow="ALWAYS">
+                       <columns>
+                           <TableColumn fx:id="coMilestoneNo" prefWidth="100" text="Milestone No"/>
+                           <TableColumn fx:id="coMilestoneName" prefWidth="200" text="Name"/>
+                           <TableColumn fx:id="coMilestoneDate" prefWidth="120" text="Target Date"/>
+                           <TableColumn fx:id="coMilestoneStatus" prefWidth="120" text="Status"/>
+                           <TableColumn fx:id="coMilestoneProject" prefWidth="180" text="Project"/>
+                       </columns>
+                   </TableView>
+               </VBox>
+           </HBox>
+       </VBox>
+   </children>
+</AnchorPane>
